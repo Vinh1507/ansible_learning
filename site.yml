@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+  - name: update all servers
+    apt:
+      update_cache: yes
+
+- hosts: web_servers
+  become: true
+  tasks:
+ 
+  - name: install apache and php package for web servers
+    package:
+      name: 
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
+      state: latest
